@@ -1,12 +1,28 @@
 name: Platform
-on: [push]
-# on:
-#   push:
-#     branches: [ main, master ]
-#   pull_request:
-#     branches: [ main, master ]
+#on: [push]
+on:
+   push:
+     branches: [ main, master ]
+   pull_request:
+     branches: [ main, master ]
 
 jobs:
+  linter:
+    name: Синтаксический анализ
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Установка Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.23'
+          cache: false
+      - name: Синтаксический анализ
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: v1.61
+          args: --timeout=30m --config=./.golangci.pipeline.yaml
+
   test:
     name: Автоматические тесты
     runs-on: ubuntu-latest

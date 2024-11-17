@@ -6,7 +6,7 @@ import (
 )
 
 const (
-	dsnEnvName = "PG_DSN"
+	dsnEnvName = "DB_DSN"
 )
 
 // PGConfig ...

@@ -2,7 +2,6 @@ package cache
 
 import (
 	"context"
-	"time"
 )
 
 // RedisClient ...
@@ -11,6 +10,6 @@ type RedisClient interface {
 	Set(ctx context.Context, key string, value interface{}) error
 	HGetAll(ctx context.Context, key string) ([]interface{}, error)
 	Get(ctx context.Context, key string) (interface{}, error)
-	Expire(ctx context.Context, key string, expiration time.Duration) error
+	Expire(ctx context.Context, key string, expiration int32) error
 	Ping(ctx context.Context) error
 }

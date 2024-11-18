@@ -2,10 +2,8 @@ package redis
 
 import (
 	"context"
-	"log"
-	"time"
-
 	"github.com/vbulash/platform_common/pkg/config"
+	"log"
 
 	"github.com/gomodule/redigo/redis"
 
@@ -97,9 +95,9 @@ func (c *client) Get(ctx context.Context, key string) (interface{}, error) {
 	return value, nil
 }
 
-func (c *client) Expire(ctx context.Context, key string, expiration time.Duration) error {
+func (c *client) Expire(ctx context.Context, key string, expiration int32) error {
 	err := c.execute(ctx, func(_ context.Context, conn redis.Conn) error {
-		_, err := conn.Do("HPEXPIRE", key, expiration*time.Millisecond)
+		_, err := conn.Do("EXPIRE", key, expiration)
 		if err != nil {
 			return err
 		}

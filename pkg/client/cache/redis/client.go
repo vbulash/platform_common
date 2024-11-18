@@ -2,8 +2,9 @@ package redis
 
 import (
 	"context"
-	"github.com/vbulash/platform_common/pkg/config"
 	"log"
+
+	"github.com/vbulash/platform_common/pkg/config"
 
 	"github.com/gomodule/redigo/redis"
 

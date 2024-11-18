@@ -99,7 +99,7 @@ func (c *client) Get(ctx context.Context, key string) (interface{}, error) {
 
 func (c *client) Expire(ctx context.Context, key string, expiration time.Duration) error {
 	err := c.execute(ctx, func(_ context.Context, conn redis.Conn) error {
-		_, err := conn.Do("EXPIRE", key, int(expiration.Seconds()))
+		_, err := conn.Do("HPEXPIRE", key, expiration*time.Millisecond)
 		if err != nil {
 			return err
 		}

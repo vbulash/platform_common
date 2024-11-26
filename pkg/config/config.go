@@ -16,6 +16,11 @@ type PGConfig interface {
 	DSN() string
 }
 
+// HTTPConfig ...
+type HTTPConfig interface {
+	Address() string
+}
+
 // RedisConfig ...
 type RedisConfig interface {
 	Address() string

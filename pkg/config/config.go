@@ -21,6 +21,11 @@ type HTTPConfig interface {
 	Address() string
 }
 
+// SwaggerConfig ...
+type SwaggerConfig interface {
+	Address() string
+}
+
 // RedisConfig ...
 type RedisConfig interface {
 	Address() string
